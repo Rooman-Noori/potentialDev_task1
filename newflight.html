@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <title>Runway Stream</title>
+    <style>
+
+    /* Main Container */
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .container:hover {
+        transform: scale(1.02);
+    }
+
+    /* Headings */
+    h2 {
+        text-align: center;
+        color: #333;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    /* Form Elements */
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label{
+        color: black;
+    }
+    label {
+        font-weight: 600;
+        color: #444;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    input:focus, select:focus {
+        border-color: #4a90e2;
+        box-shadow: 0px 0px 10px rgba(74, 144, 226, 0.5);
+    }
+
+    /* Flight Classes Section */
+    .flight-classes {
+        margin-top: 20px;
+    }
+
+    .panel {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .panel-heading {
+        background: #4a90e2;
+        color: white;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        cursor: pointer;
+    }
+
+    .panel-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .panel-body {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 0 0 10px 10px;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #4a90e2, #9013fe);
+        border: none;
+        color: white;
+        padding: 12px 25px;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #9013fe, #4a90e2);
+        transform: translateY(-3px);
+        box-shadow: 0px 10px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="img/flight-bg.mp4" type="video/mp4">
+        Your browser does not support HTML5 
+    </video>
+    <!-- dashboard part -->
+    <div class="menu-btn" onclick="toggleDashboard()">
+        <i class='bx bx-menu'></i>
+    </div>
+    <div class="dashboard" id="dashboard">
+        <ul class="nav">
+            <li>
+                <a href="#">Dashboard</a>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="user.html">Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Flight Schedule</a>
+                <ul>
+                    <li><a href="newflight.html">Add new Flight</a></li>
+                    <li><a href="manageflights.html">Manage flights</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Airbus</a>
+                <ul>
+                    <li><a href="newAirbus.html">Add new airbus</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- nav section  -->
+    <div class="nav-container">
+        <div class="logo">Runway<span>Stream</span></div>
+        <header>
+            <nav class="navbar">
+                <li>
+                    <a href="index.html" style="--i:1" class="active">Home</a>
+                    <a href="AboutUs.html" style="--i:2">About</a>
+                    <a href="Schedules.html" style="--i:4">Schedules</a>
+                    <a href="ContactUs.html" style="--i:5">Contact</a>
+                </li>
+            </nav>
+        </header>
+    </div>
+    <div class="container" id="myscroll">
+        <h2>New Flight</h2>
+        <hr>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <legend>Flight Information</legend>
+                </div>
+                <div class="panel-body">
+                    <form id="flightForm">
+                        <div class="form-group">
+                            <label for="airbusNo">Airbus No:</label>
+                            <select id="airbusNo" class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="flightNo">Flight No:</label>
+                            <input type="number" class="form-control" id="flightNo" placeholder="Flight No." required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="from">From</label>
+                            <input type="text" class="form-control" id="from" placeholder="Origin" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="to">To</label>
+                            <input type="text" class="form-control" id="to" placeholder="Destination" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="departureDate">Departure Date</label>
+                            <input type="date" class="form-control" id="departureDate" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="departureTime">Departure Time</label>
+                            <input type="time" class="form-control" id="departureTime">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="journeyHours">Journey Hours</label>
+                            <input type="number" class="form-control" id="journeyHours" min="1" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="intervals">Intervals</label>
+                            <input type="number" class="form-control" id="intervals" min="0">
+                        </div>
+    
+                        <div class="flight-classes">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-toggle="collapse" href="#firstClass">
+                                    <h4 class="panel-title">First Class</h4>
+                                </div>
+                                <div id="firstClass" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <label>Seats</label>
+                                        <input type="number" class="form-control" id="firstSeats" min="0">
+                                        <label>Price (per seat)</label>
+                                        <input type="number" class="form-control" id="firstPrice" min="0">
+                                        <label>Features</label>
+                                        <input type="text" class="form-control" id="firstFeatures">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-toggle="collapse" href="#businessClass">
+                                    <h4 class="panel-title">Business Class</h4>
+                                </div>
+                                <div id="businessClass" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <label>Seats</label>
+                                        <input type="number" class="form-control" id="businessSeats" min="0">
+                                        <label>Price (per seat)</label>
+                                        <input type="number" class="form-control" id="businessPrice" min="0">
+                                        <label>Features</label>
+                                        <input type="text" class="form-control" id="businessFeatures">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-toggle="collapse" href="#economyClass">
+                                    <h4 class="panel-title">Economy Class</h4>
+                                </div>
+                                <div id="economyClass" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <label>Seats</label>
+                                        <input type="number" class="form-control" id="economySeats" min="0">
+                                        <label>Price (per seat)</label>
+                                        <input type="number" class="form-control" id="economyPrice" min="0">
+                                        <label>Features</label>
+                                        <input type="text" class="form-control" id="economyFeatures">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="submit-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Add Flight</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <br><br>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h1>RUNWAY STREAM</h1>
+                <p>Lorem ipsum dolor sit amet consectetur. Aliquet vulputate augue penatibus in libero et id aliquam.</p>
+                <div class="subscribe">
+                    <input type="email" placeholder="Email address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+    
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Booking</h3>
+                    <ul>
+                        <li><a href="#">Book Flights</a></li>
+                        <li><a href="#">Travel Services</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Planning Your Trip</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Manage</h3>
+                    <ul>
+                        <li><a href="#">Check-in</a></li>
+                        <li><a href="#">Manage Your Booking</a></li>
+                        <li><a href="#">Chauffeur Drive</a></li>
+                        <li><a href="#">Flight Status</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Anytown, USA.</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:email@example.com">email@example.com</a></p>
+    
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>©2025 Runway Stream All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleDashboard() {
+            document.getElementById("dashboard").classList.toggle("active");
+        }
+
+        
+        document.getElementById("flightForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form reload
+
+        // Get form values
+        const flightData = {
+            airbusNo: document.getElementById("airbusNo").value,
+            flightNo: document.getElementById("flightNo").value,
+            from: document.getElementById("from").value,
+            to: document.getElementById("to").value,
+            departureDate: document.getElementById("departureDate").value,
+            departureTime: document.getElementById("departureTime").value,
+            journeyHours: document.getElementById("journeyHours").value,
+            intervals: document.getElementById("intervals").value
+        };
+
+        console.log("Flight Added:", flightData);
+        alert("Flight Added Successfully!");
+
+        // Reset form
+        document.getElementById("flightForm").reset();
+        });
+
+    </script>
+</body>
+</html>

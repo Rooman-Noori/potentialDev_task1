@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runway Stream</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Boxicons for Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Bootstrap for Styling and Modal -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* Content and Pagination Styling */
+        .content {
+            width: 80%;
+            float: right;
+            padding: 20px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+        }
+        .pagination li a {
+            gap: 10px;
+            margin: 10px;
+            color: black;
+            font-size: 20px;
+
+        }
+        .pagination li a:hover {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .menu-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+        /* New User Form Styling */
+        #newUserSection {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        #newUserSection h3 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-control {
+            width: 100%;
+            color: black;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .btn-success {
+            background: #0056b3;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-success:hover {
+            background: #4998ec;
+        }
+
+    </style>
+</head>
+<body>
+
+        <!-- Background Video -->
+        <video autoplay muted loop id="bg-video">
+            <source src="img/flight-bg.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+
+        <!-- Dashboard Sidebar -->
+        <div class="menu-btn" onclick="toggleDashboard()">
+            <i class='bx bx-menu'></i>
+        </div>
+        <div class="dashboard" id="dashboard">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#">Dashboard</a>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="user.html">Users</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Flight Schedule</a>
+                    <ul>
+                        <li><a href="newflight.html">Add new Flight</a></li>
+                        <li><a href="manageflights.html">Manage flights</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Airbus</a>
+                    <ul>
+                        <li><a href="newAirbus.html">Add new airbus</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-container">
+            <div class="logo">Runway<span>Stream</span></div>
+            <header>
+                <nav class="navbar">
+                    <ul class="list-unstyled d-flex">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="AboutUs.html">About</a></li>
+                        <li><a href="Schedules.html">Schedules</a></li>
+                        <li><a href="ContactUs.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content" style="margin-left: 170px;">
+            <h2>Users</h2>
+            <hr>
+            <button class="btn btn-primary" onclick="openNewUserModal()">
+                <i class="fa fa-plus"></i> New User</button>
+            <br><br>
+            <!-- New User Modal -->
+            <div class="modal fade" id="newUserModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New User</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="newUserForm">
+                                <div class="form-group">
+                                    <label>First Name:</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone:</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Add User</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: white;">
+                    <tr>
+                        <td>1</td>
+                        <td>4091</td>
+                        <td>John</td>
+                        <td>Wick</td>
+                        <td>0300-1234567</td>
+                        <td>john@gmail.com</td>
+                        <td>
+                            <a href="#"><i class="fa fa-pencil-alt"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>4092</td>
+                        <td>James</td>
+                        <td>Smith</td>
+                        <td>0356-3214967</td>
+                        <td>james@gmail.com</td>
+                        <td>
+                            <a href="#"><i class="fa fa-pencil-alt"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>4093</td>
+                        <td>Leona</td>
+                        <td>Jones</td>
+                        <td>0356-5699067</td>
+                        <td>leona@gmail.com</td>
+                        <td>
+                            <a href="#"><i class="fa fa-pencil-alt"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>4094</td>
+                        <td>Elizabeth</td>
+                        <td>Alexandar</td>
+                        <td>0356-3278643</td>
+                        <td>Elizabeth@gmail.com</td>
+                        <td>
+                            <a href="#"><i class="fa fa-pencil-alt"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div class="modal fade" id="deleteModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p><i class="fa fa-exclamation-triangle"></i> Are you sure you want to delete this user? This action cannot be undone.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger" onclick="deleteUser()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script>
+            function toggleDashboard() {
+                document.getElementById("dashboard").classList.toggle("active");
+            }
+
+            function deleteUser() {
+                alert("User deleted successfully!");
+                $('#deleteModal').modal('hide');
+            }
+
+            function openNewUserModal() {
+            $('#newUserModal').modal('show');
+        }
+
+        function toggleDashboard() {
+        document.getElementById("dashboard").classList.toggle("active");
+        }
+
+        function deleteUser(button) {
+            // Remove the row of the clicked delete button
+            button.closest("tr").remove();
+        }
+
+        function openNewUserModal() {
+            $('#newUserModal').modal('show');
+        }
+
+        // Handle New User Form Submission
+        document.getElementById("newUserForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Stop form from reloading the page
+
+        // Get user input values
+        let firstName = document.getElementById("firstName").value;
+        let lastName = document.getElementById("lastName").value;
+        let phone = document.getElementById("phone").value;
+        let email = document.getElementById("email").value;
+
+        // Validate form
+        if (!firstName || !lastName || !phone || !email) {
+            alert("Please fill all fields!");
+            return;
+        }
+
+        // Generate a random user ID
+        let userId = Math.floor(Math.random() * 10000);
+
+        // Get table body
+        let tableBody = document.querySelector("table tbody");
+
+        // Create a new row and insert user data
+        let newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td>${tableBody.rows.length + 1}</td>
+            <td>${userId}</td>
+            <td>${firstName}</td>
+            <td>${lastName}</td>
+            <td>${phone}</td>
+            <td>${email}</td>
+            <td>
+                <a href="#"><i class="fa fa-pencil-alt"></i></a>
+                <a href="#" onclick="deleteUser(this)"><i class="fa fa-trash"></i></a>
+            </td>
+        `;
+
+        // Append the new row to the table
+        tableBody.appendChild(newRow);
+
+        // Hide modal after adding user
+        $('#newUserModal').modal('hide');
+
+        // Clear form fields
+        document.getElementById("newUserForm").reset();
+
+        // Show confirmation alert
+        alert("User added successfully!");
+        });
+
+        </script>
+
+        <!-- Bootstrap Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

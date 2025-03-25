@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <title>Runway Stream</title>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="img/flight-bg.mp4" type="video/mp4">
+        Your browser does not support HTML5 
+    </video>
+    <!-- dashboard part -->
+    <div class="menu-btn" onclick="toggleDashboard()">
+        <i class='bx bx-menu'></i>
+    </div>
+    <div class="dashboard" id="dashboard">
+        <ul class="nav">
+            <li>
+                <a href="#">Dashboard</a>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="user.html">Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Flight Schedule</a>
+                <ul>
+                    <li><a href="newflight.html">Add new Flight</a></li>
+                    <li><a href="manageflights.html">Manage flights</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Airbus</a>
+                <ul>
+                    <li><a href="newAirbus.html">Add new airbus</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- nav section  -->
+    <div class="nav-container">
+        <div class="logo">Runway<span>Stream</span></div>
+        <header>
+            <nav class="navbar">
+                <li>
+                    <a href="index.html" style="--i:1" class="active">Home</a>
+                    <a href="AboutUs.html" style="--i:2">About</a>
+                    <a href="Schedules.html" style="--i:4">Schedules</a>
+                    <a href="ContactUs.html" style="--i:5">Contact</a>
+                </li>
+            </nav>
+        </header>
+    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Live <span>Flight Schedules</span></h1>
+        <p>Track real-time arrivals and departures with the latest updates.</p>
+    </section>
+
+    <!-- Flight Schedule Section -->
+    <div class="flight-bg">
+        <section id="flight-schedule">
+            <h2>Upcoming Arrivals & Departures</h2>
+    
+            <!-- Tabs for Arrivals & Departures -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('arrivals')">Arrivals</button>
+                <button class="tab-button" onclick="showTab('departures')">Departures</button>
+            </div>
+    
+            <!-- Arrivals Table -->
+            <div id="arrivals" class="flight-table active">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Flight</th>
+                            <th>From</th>
+                            <th>Arrival Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="arrivals-data">
+                        <!-- Live Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Departures Table -->
+            <div id="departures" class="flight-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Flight</th>
+                            <th>To</th>
+                            <th>Departure Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="departures-data">
+                        <!-- Live Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h1>RUNWAY STREAM</h1>
+                <p>Lorem ipsum dolor sit amet consectetur. Aliquet vulputate augue penatibus in libero et id aliquam.</p>
+                <div class="subscribe">
+                    <input type="email" placeholder="Email address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+    
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Booking</h3>
+                    <ul>
+                        <li><a href="#">Book Flights</a></li>
+                        <li><a href="#">Travel Services</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Planning Your Trip</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Manage</h3>
+                    <ul>
+                        <li><a href="#">Check-in</a></li>
+                        <li><a href="#">Manage Your Booking</a></li>
+                        <li><a href="#">Chauffeur Drive</a></li>
+                        <li><a href="#">Flight Status</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Anytown, USA.</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:email@example.com">email@example.com</a></p>
+    
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>©2025 Runway Stream All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleDashboard() {
+            document.getElementById("dashboard").classList.toggle("active");
+        }
+
+        // Simulated Flight Data
+        const flightArrivals = [
+            { flight: "FN202", from: "New York", time: "10:30 AM", status: "On Time" },
+            { flight: "FN305", from: "London", time: "12:00 PM", status: "Delayed" },
+            { flight: "FN412", from: "Tokyo", time: "1:45 PM", status: "Cancelled" },
+            { flight: "FN282", from: "Dubai", time: "11:30 AM", status: "On Time" },
+            { flight: "FN905", from: "Paris", time: "16:00 PM", status: "On Time" },
+            { flight: "FN322", from: "Turkey", time: "6:45 PM", status: "Cancelled" }
+        ];
+
+        const flightDepartures = [
+            { flight: "FN502", to: "Paris", time: "11:00 AM", status: "On Time" },
+            { flight: "FN610", to: "Dubai", time: "2:30 PM", status: "On Time" },
+            { flight: "FN725", to: "Sydney", time: "5:15 PM", status: "Delayed" },
+            { flight: "FN282", from: "Dubai", time: "11:30 AM", status: "On Time" },
+            { flight: "FN905", from: "Paris", time: "16:00 PM", status: "On Time" },
+            { flight: "FN322", from: "Turkey", time: "6:45 PM", status: "Cancelled" }
+        ];
+
+        // Function to Display Flight Data
+        function displayFlights(data, tableId) {
+            const tableBody = document.getElementById(tableId);
+            tableBody.innerHTML = "";
+            data.forEach(flight => {
+                const row = `<tr>
+                    <td>${flight.flight}</td>
+                    <td>${flight.from || flight.to}</td>
+                    <td>${flight.time}</td>
+                    <td class="status ${flight.status.toLowerCase().replace(" ", "-")}">${flight.status}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        // Show Default Data
+        displayFlights(flightArrivals, "arrivals-data");
+        displayFlights(flightDepartures, "departures-data");
+
+        // Tab Functionality
+        function showTab(tabId) {
+            document.querySelectorAll(".flight-table").forEach(table => table.classList.remove("active"));
+            document.getElementById(tabId).classList.add("active");
+
+            document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
+        }
+    </script>
+   
+</body>
+</html>

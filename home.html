@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <title>Runway Stream</title>
+    <style>
+
+
+/* Container */
+.container {
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Title */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Divider */
+hr {
+    border: 0;
+    height: 1px;
+    background: #444;
+    margin: 10px 0;
+}
+
+/* Profile Panel */
+.profile-panel {
+    background: #222;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Panel Header */
+.panel-header {
+    background: #444;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #bbb;
+}
+
+/* Panel Body */
+.panel-body {
+    padding: 20px;
+    height: 300px;
+}
+
+.panel-body p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="img/flight-bg.mp4" type="video/mp4">
+        Your browser does not support HTML5 
+    </video>
+    <!-- dashboard part -->
+    <div class="menu-btn" onclick="toggleDashboard()">
+        <i class='bx bx-menu'></i>
+    </div>
+    <div class="dashboard" id="dashboard">
+        <ul class="nav">
+            <li>
+                <a href="#">Dashboard</a>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="user.html">Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Flight Schedule</a>
+                <ul>
+                    <li><a href="newflight.html">Add new Flight</a></li>
+                    <li><a href="manageflights.html">Manage flights</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Airbus</a>
+                <ul>
+                    <li><a href="newAirbus.html">Add new airbus</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- nav section  -->
+    <div class="nav-container">
+        <div class="logo">Runway<span>Stream</span></div>
+        <header>
+            <nav class="navbar">
+                <li>
+                    <a href="index.html" style="--i:1" class="active">Home</a>
+                    <a href="AboutUs.html" style="--i:2">About</a>
+                    <a href="Schedules.html" style="--i:4">Schedules</a>
+                    <a href="ContactUs.html" style="--i:5">Contact</a>
+                </li>
+            </nav>
+        </header>
+    </div>
+    <div class="container">
+        <h1>Rooman Noori</h1>
+        <hr>
+
+        <div class="profile-panel">
+            <div class="panel-header">Profile Information</div>
+            <div class="panel-body">
+                <p><strong>SSID&nbsp; : &nbsp; E708UDI</strong></p>
+                <p><strong>Date of Birth&nbsp; : &nbsp; 2004/12/12</strong></p>
+                <p><strong>Phone &nbsp;: &nbsp; +92 356879237</strong></p>
+                <p><strong>Email &nbsp;: &nbsp; roomannoori@gmail.com</strong></p>
+                <p><strong>Address &nbsp;: &nbsp;Gulshan-e-waseem R-45 block</strong></p>
+            </div>
+        </div>
+    </div> <br><br><br>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h1>RUNWAY STREAM</h1>
+                <p>Lorem ipsum dolor sit amet consectetur. Aliquet vulputate augue penatibus in libero et id aliquam.</p>
+                <div class="subscribe">
+                    <input type="email" placeholder="Email address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+    
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Booking</h3>
+                    <ul>
+                        <li><a href="#">Book Flights</a></li>
+                        <li><a href="#">Travel Services</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Planning Your Trip</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Manage</h3>
+                    <ul>
+                        <li><a href="#">Check-in</a></li>
+                        <li><a href="#">Manage Your Booking</a></li>
+                        <li><a href="#">Chauffeur Drive</a></li>
+                        <li><a href="#">Flight Status</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Anytown, USA.</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:email@example.com">email@example.com</a></p>
+    
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>©2025 Runway Stream All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+    <script>
+        function toggleDashboard() {
+            document.getElementById("dashboard").classList.toggle("active");
+        }
+    </script>

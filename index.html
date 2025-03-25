@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <title>Runway Stream</title>
+    <style>
+        .container {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .search-box {
+        margin-bottom: 20px;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    thead {
+        background: #007BFF;
+        color: white;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background: #f9f9f9;
+    }
+
+    tr:hover {
+        background: #f1f1f1;
+    }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="img/flight-bg.mp4" type="video/mp4">
+        Your browser does not support HTML5 
+    </video>
+    <!-- dashboard part -->
+    <div class="menu-btn" onclick="toggleDashboard()">
+        <i class='bx bx-menu'></i>
+    </div>
+    <div class="dashboard" id="dashboard">
+        <ul class="nav">
+            <li>
+                <a href="#">Dashboard</a>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="user.html">Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Flight Schedule</a>
+                <ul>
+                    <li><a href="newflight.html">Add new Flight</a></li>
+                    <li><a href="manageflights.html">Manage flights</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Airbus</a>
+                <ul>
+                    <li><a href="newAirbus.html">Add new airbus</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- nav section  -->
+    <div class="nav-container">
+        <div class="logo">Runway<span>Stream</span></div>
+        <header>
+            <nav class="navbar">
+                <li>
+                    <a href="index.html" style="--i:1" class="active">Home</a>
+                    <a href="AboutUs.html" style="--i:2">About</a>
+                    <a href="Schedules.html" style="--i:4">Schedules</a>
+                    <a href="ContactUs.html" style="--i:5">Contact</a>
+                </li>
+            </nav>
+        </header>
+    </div> <br><br><br>
+    <div class="container">
+        <h2>Search & Filter Flights</h2>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by Airline, Destination, or Time...">
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Airline</th>
+                    <th>Destination</th>
+                    <th>Departure Time</th>
+                </tr>
+            </thead>
+            <tbody id="flightsTable">
+                <tr>
+                    <td>American Airlines</td>
+                    <td>New York</td>
+                    <td>08:30 AM</td>
+                </tr>
+                <tr>
+                    <td>Emirates</td>
+                    <td>Dubai</td>
+                    <td>10:00 AM</td>
+                </tr>
+                <tr>
+                    <td>Qatar Airways</td>
+                    <td>Doha</td>
+                    <td>12:15 PM</td>
+                </tr>
+                <tr>
+                    <td>British Airways</td>
+                    <td>London</td>
+                    <td>02:45 PM</td>
+                </tr>
+                <tr>
+                    <td>Air Canada</td>
+                    <td>Toronto</td>
+                    <td>04:20 PM</td>
+                </tr>
+                <tr>
+                    <td>Singapore Airlines</td>
+                    <td>Singapore</td>
+                    <td>06:50 PM</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container1">
+        <div class="text-section">
+            <h1><span class="highlight">Fly</span> to Your Dream <br> <span class="highlight">Destination</span> Today!</h1>
+            <p>Seamless booking, unbeatable prices, and unforgettable experiences—your journey starts here.</p>
+            <button class="btn">Book Now</button>
+        </div>
+    </div> <br><br><br>
+    <div class="container2" >
+        <div class="heading">Latest Flight Deals</div>
+        <div class="deals">
+            <div class="deal-card">
+                <img src="img/flight-1.png" alt="Beach">
+                <h3>Dubai to Paris</h3>
+                <p>05 Apr, 2024 - 12 Apr, 2024</p>
+                <p>Business Class</p>
+                <p class="price">$720</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+            <div class="deal-card">
+                <img src="img/flight-2.png" alt="Mountains">
+                <h3>Dubai to New York</h3>
+                <p>18 Apr, 2024 - 28 Apr, 2024</p>
+                <p>Economy Class</p>
+                <p class="price">$650</p>
+                <button class="book-btn">Booking Now</button>
+            </div>
+            <div class="deal-card">
+                <img src="img/flight-3.png" alt="Beach">
+                <h3>Dubai to Tokyo</h3>
+                <p>10 May, 2024 - 20 May, 2024</p>
+                <p>First Class</p>
+                <p class="price">$1,200</p>
+                <button class="book-btn">Booking Now</button>
+            </div>
+            <div class="deal-card">
+                <img src="img/flight-4.jpg" alt="Beach">
+                <h3>Dubai to Bali</h3>
+                <p>22 Mar, 2024 - 30 Mar, 2024</p>
+                <p>Premium Economy</p>
+                <p class="price">$480</p>
+                <button class="book-btn">Booking Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="hero-section">
+        <div class="content">
+            <h1 class="headline">
+                EXPLORE <span>NEW</span> <br>
+                DESTINATIONS <span class="blue">WITH</span> <br>
+                <span class="blue">RUNWAY STREAM</span>
+            </h1>
+            <button class="book-btn">Book Now</button>
+        </div>
+        <div class="destinations">
+            <div class="destination-card small">
+                <img src="img/dubai (1).jpg" alt="img1">
+                <p>Dubai</p>
+            </div>
+            <div class="destination-card small">
+                <img src="img/mexico.jpg" alt="img1">
+                <p>mexico</p>
+            </div>
+            <div class="destination-card small">
+                <img src="img/france.jpg" alt="img1">
+                <p>France</p>
+            </div>
+            <div class="destination-card small">
+                <img src="img/istanbul.jpg" alt="img1">
+                <p>Istanbul</p>
+            </div>
+            <div class="destination-card small">
+                <img src="img/paris.jpg" alt="img2">
+                <p>Paris</p>
+            </div>
+            <div class="destination-card small">
+                <img src="img/venice.jpg" alt="img3">
+                <p>Venice</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h1>RUNWAY STREAM</h1>
+                <p>Lorem ipsum dolor sit amet consectetur. Aliquet vulputate augue penatibus in libero et id aliquam.</p>
+                <div class="subscribe">
+                    <input type="email" placeholder="Email address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+    
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Booking</h3>
+                    <ul>
+                        <li><a href="#">Book Flights</a></li>
+                        <li><a href="#">Travel Services</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Planning Your Trip</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Manage</h3>
+                    <ul>
+                        <li><a href="#">Check-in</a></li>
+                        <li><a href="#">Manage Your Booking</a></li>
+                        <li><a href="#">Chauffeur Drive</a></li>
+                        <li><a href="#">Flight Status</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Anytown, USA.</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:email@example.com">email@example.com</a></p>
+    
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>©2025 Runway Stream All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleDashboard() {
+            document.getElementById("dashboard").classList.toggle("active");
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("searchInput");
+            const flightsTable = document.getElementById("flightsTable").getElementsByTagName("tr");
+
+            // Initially hide all flights
+            for (let i = 0; i < flightsTable.length; i++) {
+                flightsTable[i].style.display = "none";
+            }
+
+            // Show all flights when the search bar is clicked
+            searchInput.addEventListener("focus", function () {
+                for (let i = 0; i < flightsTable.length; i++) {
+                    flightsTable[i].style.display = "";
+                }
+            });
+
+            // Filter flights as user types
+            searchInput.addEventListener("keyup", function () {
+                let filter = searchInput.value.toLowerCase();
+
+                for (let i = 0; i < flightsTable.length; i++) {
+                    let airline = flightsTable[i].getElementsByTagName("td")[0]?.innerText.toLowerCase();
+                    let destination = flightsTable[i].getElementsByTagName("td")[1]?.innerText.toLowerCase();
+                    let time = flightsTable[i].getElementsByTagName("td")[2]?.innerText.toLowerCase();
+
+                    if (airline.includes(filter) || destination.includes(filter) || time.includes(filter)) {
+                        flightsTable[i].style.display = "";
+                    } else {
+                        flightsTable[i].style.display = "none";
+                    }
+                }
+            });
+
+    // Hide flights when search box is empty and loses focus
+    searchInput.addEventListener("blur", function () {
+        if (searchInput.value === "") {
+            for (let i = 0; i < flightsTable.length; i++) {
+                flightsTable[i].style.display = "none";
+            }
+        }
+    });
+});
+
+
+    </script>
+</body>
+</html>
